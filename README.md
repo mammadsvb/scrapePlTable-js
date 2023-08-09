@@ -12,3 +12,4 @@ $ cheerio (scrape info)
 $ mongoose (connect to database)
 $ node-schedule (run according to planning)
 ```
+run this code for the first time with await Team.insertMany(info) then comment it.
