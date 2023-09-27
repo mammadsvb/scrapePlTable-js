@@ -37,6 +37,7 @@ async function updateDB(info){
 
 function next_Match($,element){
     const nextMatch={};
+    element = $(element).find(".nextMatchCol")
     const next = $(element).find('abbr')
     const time = $(element).find('time')
     const date = $(element).find('.match-fixture__match-info')
@@ -68,10 +69,11 @@ async function scrape(){
             
             const tableRow = {}
             tableRow["Club"] = $(element).attr("data-filtered-table-row-name");
+            tableRow["Position"] = $(element).attr("data-position");
             tableRow["Next_Match"] = nextMatch; 
             
             $(team).each((i,e)=>{ //[td(pos(t1))](i=0) ->[td(club)(t1))](i=1)->...(i=11)->[td(pos(t2))](i=0)-> ...
-                    if( i == 1 || i>9) return true;
+                    if( i <= 1 || i>9) return true;
                     tableRow[headerList[i]] = $(e).text().trim(); //get pos played ...
             })
 
